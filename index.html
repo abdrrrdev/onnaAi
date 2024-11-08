@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Image Slider</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f4f4f9;
+      font-family: Arial, sans-serif;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    .slide img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    .active-slide {
+      display: block;
+    }
+
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px;
+      font-size: 18px;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      cursor: pointer;
+      border-radius: 50%;
+      user-select: none;
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="slider-container">
+    <div class="slide active-slide">
+      <img src="sources/img/onnaAi_page-0001.jpg" alt="Slide 1">
+    </div>
+    <div class="slide">
+      <img src="sources/img/onnaAi_page-0002.jpg" alt="Slide 2">
+    </div>
+    <div class="slide">
+      <img src="sources/img/onnaAi_page-0003.jpg" alt="Slide 3">
+    </div>
+    <div class="slide">
+      <img src="sources/img/onnaAi_page-0004.jpg" alt="Slide 4">
+    </div>
+    <div class="slide">
+      <img src="sources/img/onnaAi_page-0005.jpg" alt="Slide 5">
+    </div>
+    <div class="slide">
+      <img src="sources/img/onnaAi_page-0006.jpg" alt="Slide 6">
+    </div>
+    <div class="slide">
+      <img src="sources/img/onnaAi_page-0007.jpg" alt="Slide 7">
+    </div>
+    <div class="slide">
+      <img src="sources/img/onnaAi_page-0008.jpg" alt="Slide 8">
+    </div>
+    <div class="slide">
+      <img src="sources/img/onnaAi_page-0009.jpg" alt="Slide 9">
+    </div>
+
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove("active-slide"));
+      slides[index].classList.add("active-slide");
+    }
+
+    function changeSlide(direction) {
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+  </script>
+
+</body>
+
+</html>
